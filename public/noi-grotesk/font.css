@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "noigrotesk";
+  src: url("/NoiGrotesk-Regular.eot");
+  src: url("/NoiGrotesk-Regular.eot") format("embedded-opentype"),
+    url("/NoiGrotesk-Regular.woff2") format("woff2"),
+    url("/NoiGrotesk-Regular") format("woff"),
+    url("/NoiGrotesk-Regular.ttf") format("truetype");
+  font-display: block;
+  font-style: normal;
+  font-weight: normal;
+}

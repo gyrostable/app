@@ -1,0 +1,7 @@
+schema: schema.graphql
+documents: ["src/**/*.ts"]
+generates:
+  types/subgraph/__generated__/types.ts:
+    plugins:
+      - "@graphql-codegen/typescript"
+      - "@graphql-codegen/typescript-operations"

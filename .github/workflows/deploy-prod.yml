@@ -1,0 +1,46 @@
+name: Deploy to Firebase Hosting on merge
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_REACT_APP_SUBGRAPH_POLYGON: ${{ secrets.NEXT_PUBLIC_REACT_APP_SUBGRAPH_POLYGON }}
+      NEXT_PUBLIC_ROLLBAR_TOKEN: ${{ secrets.NEXT_PUBLIC_ROLLBAR_TOKEN }}
+      NEXT_PUBLIC_POLYGON_ALCHEMY_KEY: ${{ secrets.NEXT_PUBLIC_POLYGON_ALCHEMY_KEY }}
+      NEXT_PUBLIC_MAINNET_ALCHEMY_KEY: ${{ secrets.NEXT_PUBLIC_MAINNET_ALCHEMY_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing Dependencies
+        run: yarn
+      - name: Create Typechain
+        run: yarn typechain
+      - name: Create Graphql Schema
+        run: yarn schema
+      - name: Building App
+        run: yarn run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_REACT_APP_SUBGRAPH_POLYGON: ${{ secrets.NEXT_PUBLIC_REACT_APP_SUBGRAPH_POLYGON }}
+      NEXT_PUBLIC_ROLLBAR_TOKEN: ${{ secrets.NEXT_PUBLIC_ROLLBAR_TOKEN }}
+      NEXT_PUBLIC_POLYGON_ALCHEMY_KEY: ${{ secrets.NEXT_PUBLIC_POLYGON_ALCHEMY_KEY }}
+      NEXT_PUBLIC_MAINNET_ALCHEMY_KEY: ${{ secrets.NEXT_PUBLIC_MAINNET_ALCHEMY_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing Dependencies
+        run: yarn
+      - name: Create Typechain
+        run: yarn typechain
+      - name: Create Graphql Schema
+        run: yarn schema
+      - name: Building App
+        run: yarn run build
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools
+      - name: Deploying to Firebase
+        run: firebase deploy --token "${{ secrets.FIREBASE_SECRET }}" --only hosting

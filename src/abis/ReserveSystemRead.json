@@ -1,0 +1,231 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract ReserveManager",
+        "name": "_reserveManager",
+        "type": "address"
+      },
+      {
+        "internalType": "contract PrimaryAMMV1",
+        "name": "_primaryAMMV1",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "read",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "totalUSDValue",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "address",
+                    "name": "vault",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint8",
+                    "name": "decimals",
+                    "type": "uint8"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "underlying",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "price",
+                    "type": "uint256"
+                  },
+                  {
+                    "components": [
+                      {
+                        "internalType": "uint256",
+                        "name": "initialPrice",
+                        "type": "uint256"
+                      },
+                      {
+                        "internalType": "uint256",
+                        "name": "initialWeight",
+                        "type": "uint256"
+                      },
+                      {
+                        "internalType": "uint256",
+                        "name": "shortFlowMemory",
+                        "type": "uint256"
+                      },
+                      {
+                        "internalType": "uint256",
+                        "name": "shortFlowThreshold",
+                        "type": "uint256"
+                      }
+                    ],
+                    "internalType": "struct DataTypes.PersistedVaultMetadata",
+                    "name": "persistedMetadata",
+                    "type": "tuple"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "reserveBalance",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "currentWeight",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "idealWeight",
+                    "type": "uint256"
+                  },
+                  {
+                    "components": [
+                      {
+                        "internalType": "address",
+                        "name": "tokenAddress",
+                        "type": "address"
+                      },
+                      {
+                        "internalType": "bool",
+                        "name": "isStable",
+                        "type": "bool"
+                      },
+                      {
+                        "internalType": "uint256",
+                        "name": "price",
+                        "type": "uint256"
+                      }
+                    ],
+                    "internalType": "struct DataTypes.PricedToken[]",
+                    "name": "pricedTokens",
+                    "type": "tuple[]"
+                  }
+                ],
+                "internalType": "struct DataTypes.VaultInfo[]",
+                "name": "vaults",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct DataTypes.ReserveState",
+            "name": "reserveState",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "alphaBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "xuBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "thetaBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "outflowMemory",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct IPAMM.Params",
+            "name": "systemParams",
+            "type": "tuple"
+          },
+          {
+            "internalType": "uint256",
+            "name": "redemptionLevel",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "redemptionPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct ReserveSystemRead.ReadValues",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "totalUSDValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "readWithoutReserveState",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              {
+                "internalType": "uint64",
+                "name": "alphaBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "xuBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "thetaBar",
+                "type": "uint64"
+              },
+              {
+                "internalType": "uint64",
+                "name": "outflowMemory",
+                "type": "uint64"
+              }
+            ],
+            "internalType": "struct IPAMM.Params",
+            "name": "systemParams",
+            "type": "tuple"
+          },
+          {
+            "internalType": "uint256",
+            "name": "redemptionLevel",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "redemptionPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct ReserveSystemRead.ReadValuesWithoutReserveState",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
